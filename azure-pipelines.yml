@@ -1,5 +1,6 @@
-# Node.js
-# Build a general Node.js project with npm.
+  
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
@@ -16,6 +17,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    npm install -g @angular/cli
     npm install
-    npm run build
+    ng build --prod
   displayName: 'npm install and build'
