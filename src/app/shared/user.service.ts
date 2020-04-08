@@ -36,7 +36,9 @@ export class UserService {
      }
    );
   }
-
+logOut(){
+  localStorage.removeItem('userToken'); 
+}
   getUserClaims(){
    
   }

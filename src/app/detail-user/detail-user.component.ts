@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../shared/user.model';
+import { UserService } from '../shared/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail-user',
@@ -8,10 +10,13 @@ import { User } from '../shared/user.model';
 })
 export class DetailUserComponent implements OnInit {
 firstname :string;
-  constructor() { }
+  constructor(private serviceUser:UserService, private route : Router) { }
 
   ngOnInit(): void {
     this.firstname=localStorage.getItem('userToken');
   }
-
+logOut(){
+  this.serviceUser.logOut();
+  this.route.navigate(['/login']);
+}
 }
