@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
   user: User;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-
+  erreur:string;
+  isLoading=false;
   constructor(private userService: UserService, private toastr: ToastrService,private router : Router) { }
 
   ngOnInit() {
@@ -33,15 +34,22 @@ export class SignUpComponent implements OnInit {
   }
 
   OnSubmit(form: NgForm) {
- 
+ this.isLoading=true;
     this.userService.registerUser(form.value)
       .subscribe(resData=>{
         this.router.navigate(['/login']);
         this.resetForm();
+        this.isLoading=false;
       },
-        error=>{
-            console.log(error);
-
+        errorRes=>{
+            console.log(errorRes.error.error.message);
+            this.isLoading=false;
+          switch(errorRes.error.error.message)
+          {
+            case 'EMAIL_EXISTS':
+              this.erreur="L'email existe déjà";
+          }
+          this.resetForm();
         }
         );
   }

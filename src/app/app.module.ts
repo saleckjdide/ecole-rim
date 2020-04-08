@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { appRoutes } from './routes';
 import { DetailUserComponent } from './detail-user/detail-user.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 
 
@@ -24,7 +25,8 @@ import { DetailUserComponent } from './detail-user/detail-user.component';
     UserComponent,
     SignInComponent,
     HomeComponent,
-    DetailUserComponent
+    DetailUserComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
