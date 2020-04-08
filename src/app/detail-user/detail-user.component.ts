@@ -13,6 +13,9 @@ firstname :string;
   constructor(private serviceUser:UserService, private route : Router) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem('userToken')){
+      this.route.navigate(['/login']);
+    }
     this.firstname=localStorage.getItem('userToken');
   }
 logOut(){
