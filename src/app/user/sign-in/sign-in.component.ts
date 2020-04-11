@@ -49,8 +49,8 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({     // {5}
-      userName: [''],
-      password: ['']
+      userName: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -62,7 +62,7 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.valid);
+
     if (this.form.valid) {
       console.log(this.form.value);
       this.authService.login(this.form.value).subscribe((data : any)=>{

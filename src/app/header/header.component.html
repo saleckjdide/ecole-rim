@@ -6,9 +6,30 @@
   <span class="fill-remaining-space"></span>
   <button mat-button>Mes cours</button>
   <button mat-button>Mes notes</button>
-  <button mat-button>
-    Quitter
+  <span class="spacer"></span>
+      <button mat-button [matMenuTriggerFor]="menu" fxShow.lt-md="false" fxShow.gt-sm="true">
+        <mat-icon>account_circle</mat-icon>
+        <span class="ml-2">Mon compte</span>
+      </button>
+    
+  <mat-menu #menu="matMenu" overlapTrigger="false">
+    <button mat-menu-item>
+      <mat-icon>account_circle</mat-icon>
+      <span>My Account</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>money</mat-icon>
+      <span>Billing</span>
+    </button>
+  </mat-menu>
+  
+  <button mat-button>    
   <mat-icon class="ml-3" (click)="onLogout()" title="Logout"  *ngIf="isLoggedIn$ | async">exit_to_app</mat-icon>
+  Quitter
 </button>
   <!-- <button mat-button (click)="onLogout()"  *ngIf="isLoggedIn$ | async">Logout</button>-->
 </mat-toolbar>
