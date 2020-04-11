@@ -1,6 +1,10 @@
 <div class="signin-content">
   <mat-card>
-    <mat-card-title>Login</mat-card-title>
+    <div class="row">
+     <div class="input-field">
+              <button  class="btn-large btn-submit">Login</button>
+            </div>
+          </div>
     <mat-card-content>
       <div *ngIf="isLoginError" class="red-text center error-message col-sm-12">
         <i class="material-icons">error</i> Incorrect username or password
@@ -20,8 +24,8 @@
           </div>
         </div>
         <div class="row">
-            <div class="input-field col s12">
-              <button  class="btn-large btn-submit">Login</button>
+            <div class="input-field col s12 ">
+              <button  class="btn-large btn-submit">Se connecter</button>
             </div>
           </div>
       </form>
