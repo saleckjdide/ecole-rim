@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router'
 import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
-import { SignUpComponent } from './user/sign-up/sign-up.component';
+
 import { SignInComponent } from './user/sign-in/sign-in.component';
+
+import { AuthGuard } from './auth/auth.guard';
 import { DetailUserComponent } from './detail-user/detail-user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+
 //import { AuthGuard } from './auth/auth.guard';
 
 export const appRoutes: Routes = [
@@ -13,13 +16,14 @@ export const appRoutes: Routes = [
     //children: [{ path: '', component: SignUpComponent }]
 },
     {
-        path: 'signup', component: UserComponent,
-        children: [{ path: '', component: SignUpComponent }]
-    },
+        path: 'signup', component: SignUpComponent
+       
+    },/*
     {
-        path: 'login', component: UserComponent,
-        children: [{ path: '', component: SignInComponent }]
+        path: 'login', component: UserComponent
     },
-    { path : '', redirectTo:'/login', pathMatch : 'full'}
+    { path : '', redirectTo:'/login', pathMatch : 'full'}*/
+    { path: '', component: HomeComponent},
+    { path: 'login', component:SignInComponent  }
     
 ];

@@ -34,3 +34,24 @@ div.error-message i{
 .tabs .tab a.active{
     background-color: #fff !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+  }
+  .signin-content {
+    padding: 60px 1rem;
+  }
+  .full-width-input {
+    width: 100%;
+  }
+  .mat-card-title{
+      background-color: #38547b;
+      height: 54px;
+      line-height: 54px;
+      width:100%;
+  }

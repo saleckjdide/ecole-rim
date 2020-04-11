@@ -1,15 +1,14 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="#" class="navbar-brand">Lycée</a>
-        </div>
-         <div class="collapse navbar-collapse">
-             <ul class="nav navbar-nav">
-                 <li><a href="#">Actualités</a></li>
-                 <li><a href="#">Professeurs</a></li>
-                 <li><a href="#">Étudiants</a></li>
-             </ul>
-         </div>
-    </div>
-
-</nav>
+<mat-toolbar color="primary" *ngIf="isLoggedIn$ | async">
+  <button mat-button>
+    <mat-icon class="mr-1">home</mat-icon>
+    Home
+  </button>
+  <span class="fill-remaining-space"></span>
+  <button mat-button>Mes cours</button>
+  <button mat-button>Mes notes</button>
+  <button mat-button>
+    Quitter
+  <mat-icon class="ml-3" (click)="onLogout()" title="Logout"  *ngIf="isLoggedIn$ | async">exit_to_app</mat-icon>
+</button>
+  <!-- <button mat-button (click)="onLogout()"  *ngIf="isLoggedIn$ | async">Logout</button>-->
+</mat-toolbar>

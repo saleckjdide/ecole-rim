@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 
-import { User } from './user.model';
+import { User } from '../auth/user';
 
-export interface AuthResponseData {
+/*export interface AuthResponseData {
   kind: string;
   idToken: string;
   email: string;
@@ -14,12 +14,23 @@ export interface AuthResponseData {
   expiresIn: string;
   localId: string;
   registered?: boolean;
+}*/
+interface AuthResponseData{
+  idToken: string;
+  email: string;
+  refreshToken:string;
+  expiresIn: string;
+  localId: string;
+  registered?:boolean;
 }
-
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  user = new BehaviorSubject<User>(null);
+ /* user = new BehaviorSubject<User>(null);
+  private loggedIn = new BehaviorSubject<boolean>(false); // {1}
 
+  get isLoggedIn() {
+    return this.loggedIn.asObservable(); // {2}
+  }
   constructor(private http: HttpClient, private router: Router) {}
 
   signup(email: string, password: string) {
@@ -101,5 +112,33 @@ export class AuthService {
         break;
     }
     return throwError(errorMessage);
+  }*/
+  private loggedIn = new BehaviorSubject<boolean>(false); // {1}
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable(); // {2}
+  }
+
+  constructor(
+    private router: Router,private http :HttpClient
+  ) {}
+
+  login(user: User){
+    if (user.userName !== '' && user.password !== '' ) { // {3}
+      this.loggedIn.next(true);
+      return  this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC1Scu5kcoMb12fGbAcB08-j3pCnZah52I',
+      {
+        email:user.userName,
+        password:user.password,
+        returnSecureToken:true
+       }
+     );
+     // this.router.navigate(['/detailuser']);
+    }
+  }
+
+  logout() {                            // {4}
+    this.loggedIn.next(false);
+    this.router.navigate(['/login']);
   }
 }
