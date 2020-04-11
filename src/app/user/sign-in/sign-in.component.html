@@ -6,7 +6,7 @@
             </div>
           </div>
     <mat-card-content>
-      <div *ngIf="isLoginError" class="red-text center error-message col-sm-12">
+      <div *ngIf="isLoginError" class="red-text  error-message col-sm-12">
         <i class="material-icons">error</i> Email ou mot de passe incorrect.
     </div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
