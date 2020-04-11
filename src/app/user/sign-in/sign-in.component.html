@@ -7,20 +7,20 @@
           </div>
     <mat-card-content>
       <div *ngIf="isLoginError" class="red-text center error-message col-sm-12">
-        <i class="material-icons">error</i> Incorrect username or password
+        <i class="material-icons">error</i> Email ou mot de passe incorrect.
     </div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
        
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">account_circle</i>
-            <input type="text"  formControlName="userName" placeholder="userName" required>
+            <input type="text"  formControlName="userName" placeholder="Email" required>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">vpn_key</i>
-            <input type="password"  formControlName="password" placeholder="Password" required>
+            <input type="password"  formControlName="password" placeholder="Mot de passe" required>
           </div>
         </div>
         <div class="row">
