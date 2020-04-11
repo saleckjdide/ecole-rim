@@ -23,7 +23,7 @@ export const appRoutes: Routes = [
         path: 'login', component: UserComponent
     },
     { path : '', redirectTo:'/login', pathMatch : 'full'}*/
-    { path: '', component: HomeComponent},
+    { path : '', redirectTo:'/login', pathMatch : 'full'},
     { path: 'login', component:SignInComponent  }
     
 ];
