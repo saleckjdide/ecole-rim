@@ -20,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
 
 import{AngularFireModule} from '@angular/fire'
 import { MaterialModule } from './material-module/material-module.module';
+import { SigUpEtape2Component } from './sig-up-etape2/sig-up-etape2.component';
 
 
 
@@ -33,7 +34,8 @@ import { MaterialModule } from './material-module/material-module.module';
     HomeComponent,
     DetailUserComponent,
     LoadingSpinnerComponent,
-    HeaderComponent
+    HeaderComponent,
+    SigUpEtape2Component
 
   ],
   imports: [

@@ -12,6 +12,12 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
   user: User;
+  male:string='Homme';
+  female:string='Femme';
+  prof:string='prof';
+  etu:string='etu';
+  selected:number=1;
+
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   erreur:string;
   isLoading=false;
@@ -25,11 +31,16 @@ export class SignUpComponent implements OnInit {
     if (form != null)
       form.reset();
     this.user = {
+      Uid:'',
       UserName: '',
       Password: '',
       Email: '',
       FirstName: '',
-      LastName: ''
+      LastName: '',
+      Sexe:'',
+      Brithday:new Date('1900-01-01'),
+      Active:true,
+      Type:'etu',
     }
   }
 
@@ -37,6 +48,11 @@ export class SignUpComponent implements OnInit {
  this.isLoading=true;
     this.userService.registerUser(form.value)
       .subscribe(resData=>{
+        this.user.Uid=resData.localId;
+        this.user.Active
+        
+       var response= this.userService.writeUserData(this.user);
+       console.log(response);
         this.router.navigate(['/login']);
         this.resetForm();
         this.isLoading=false;

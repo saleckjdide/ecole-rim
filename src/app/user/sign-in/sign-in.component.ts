@@ -13,31 +13,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class SignInComponent implements OnInit {
  isLoginError : boolean = false; 
   isLoading=false;
-  /* 
-  constructor(private userService : UserService,private router : Router) { }
- 
-  ngOnInit() {
-    if(localStorage.getItem('userToken')){
-      this.router.navigate(['/detailuser']);
-    }
-  }
 
-  OnSubmit(userName,password){
-    this.isLoading=true;
-     this.userService.userAuthentication(userName,password).subscribe((data : any)=>{
-       console.log(data);
-       
-      localStorage.setItem('userToken',data.email);
-      this.router.navigate(['/detailuser']);
-      this.isLoading=false;
-    },
-    (err : HttpErrorResponse)=>{
-      this.isLoginError = true;
-      this.isLoading=false;
-    });
-    
-  
-  }*/
   form: FormGroup;                    // {1}
   private formSubmitAttempt: boolean; // {2}
 

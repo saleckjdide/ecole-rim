@@ -8,15 +8,14 @@ import { User } from '../auth/user';
 import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
 
-/*export interface AuthResponseData {
-  kind: string;
+interface authResponseData{
   idToken: string;
   email: string;
-  refreshToken: string;
+  refreshToken:string;
   expiresIn: string;
   localId: string;
-  registered?: boolean;
-}*/
+  registered?:boolean;
+}
 export interface AuthResponseData{
   idToken: string;
   email: string;
@@ -143,9 +142,12 @@ export class AuthService {
       if(use){
         this.loggedIn.next(true);
         this.router.navigate(['/detailuser']);
+        localStorage.setItem('userToken',user.email);
       }else{
         //inscription
         this.loggedIn.next(false);
+        localStorage.setItem('uid',user.localId);
+        localStorage.setItem('userToken',user.email);
         this.router.navigate(['/inscription']);
       }
      
@@ -155,7 +157,16 @@ export class AuthService {
      // 
     }
   }
-  
+  registerUser(user: User) {
+    console.log(user);
+   return  this.http.post<authResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC1Scu5kcoMb12fGbAcB08-j3pCnZah52I',
+   {
+     email:user.email,
+     password:user.password,
+     returnSecureToken:true
+    }
+  );
+  }
 
   logout() {                            // {4}
     this.loggedIn.next(false);
@@ -168,4 +179,5 @@ export class AuthService {
       
      });
   }
+ 
 }

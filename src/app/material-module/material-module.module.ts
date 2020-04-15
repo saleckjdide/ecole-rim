@@ -7,6 +7,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [      
@@ -16,7 +20,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatIconModule,
     MatCardModule,
     MatMenuModule,
-    MatFormFieldModule 
+    MatFormFieldModule ,
+    MatRadioModule,
+    MatDatepickerModule,
+  
+    MatSelectModule,
+   
+  
   ],
   exports: [
     MatButtonModule,
@@ -24,7 +34,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatFormFieldModule 
+    MatFormFieldModule ,
+    MatRadioModule,
+    MatDatepickerModule,
+   
+    MatSelectModule
   ]
 })
 export class MaterialModule {}

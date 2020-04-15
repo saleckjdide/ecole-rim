@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from './user.model';
+import * as firebase from 'firebase';
 interface authResponseData{
   idToken: string;
   email: string;
@@ -39,8 +40,14 @@ export class UserService {
 logOut(){
   localStorage.removeItem('userToken'); 
 }
-  getUserClaims(){
-   
-  }
+writeUserData(user:User):Promise<User> {
+  console.log(user);
+ return firebase.database().ref('users/' + user.Uid).set({
+    firstname: user.FirstName,
+    lastname: user.LastName,
+    email: user.Email,
+    type:user.Type
+  });
+}
 
 }
