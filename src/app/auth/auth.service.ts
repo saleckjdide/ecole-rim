@@ -140,9 +140,17 @@ export class AuthService {
      ).subscribe(user=>{
     
     this.getUser(user.localId).then(use=>{
+      if(use){
+        this.loggedIn.next(true);
+        this.router.navigate(['/detailuser']);
+      }else{
+        //inscription
+        this.loggedIn.next(false);
+        this.router.navigate(['/inscription']);
+      }
+     
+    });
       
-      this.loggedIn.next(true);});
-      this.router.navigate(['/detailuser']);
      });
      // 
     }
