@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/shared/user.model';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-register-infos',
@@ -15,7 +15,7 @@ export class RegisterInfosComponent implements OnInit {
   user: User;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
-  constructor(private userService: UserService, private toastr: ToastrService) { 
+  constructor(private userService: UserService, private toastr: ToastrService, private frm : FormBuilder) { 
     
   }
 
