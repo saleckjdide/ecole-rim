@@ -21,7 +21,10 @@ import {  MatListModule, } from "@angular/material/list";
 import {   MatButtonModule, } from "@angular/material/button";
 import {   MatIconModule, } from "@angular/material/icon";
 import { HeaderComponent } from './header/header.component';
-import { AppMaterialModule } from './app-material/app-material.module';
+
+import{AngularFireModule} from '@angular/fire'
+import { MaterialModule } from './material-module/material-module.module';
+import { MatMenu } from '@angular/material/menu';
 
 
 
@@ -34,7 +37,7 @@ import { AppMaterialModule } from './app-material/app-material.module';
     HomeComponent,
     DetailUserComponent,
     LoadingSpinnerComponent,
-    HeaderComponent
+    HeaderComponent,FormsModule
 
   ],
   imports: [
@@ -44,7 +47,10 @@ import { AppMaterialModule } from './app-material/app-material.module';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-   AppMaterialModule, ReactiveFormsModule
+  ReactiveFormsModule,
+   AngularFireModule,
+   MaterialModule
+   
   ],
   providers: [UserService
     

@@ -5,6 +5,8 @@ import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 
 import { User } from '../auth/user';
+import { environment } from 'src/environments/environment';
+import * as firebase from 'firebase';
 
 /*export interface AuthResponseData {
   kind: string;
@@ -15,7 +17,7 @@ import { User } from '../auth/user';
   localId: string;
   registered?: boolean;
 }*/
-interface AuthResponseData{
+export interface AuthResponseData{
   idToken: string;
   email: string;
   refreshToken:string;
@@ -25,6 +27,7 @@ interface AuthResponseData{
 }
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
  /* user = new BehaviorSubject<User>(null);
   private loggedIn = new BehaviorSubject<boolean>(false); // {1}
 
@@ -121,24 +124,40 @@ export class AuthService {
 
   constructor(
     private router: Router,private http :HttpClient
-  ) {}
+  ) {
+    firebase.initializeApp(environment.firebase)
+  }
 
   login(user: User){
     if (user.userName !== '' && user.password !== '' ) { // {3}
-      this.loggedIn.next(true);
+      
       return  this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC1Scu5kcoMb12fGbAcB08-j3pCnZah52I',
       {
         email:user.userName,
         password:user.password,
         returnSecureToken:true
        }
-     );
-     // this.router.navigate(['/detailuser']);
+     ).subscribe(user=>{
+    
+    this.getUser(user.localId).then(use=>{
+      
+      this.loggedIn.next(true);});
+      this.router.navigate(['/detailuser']);
+     });
+     // 
     }
   }
+  
 
   logout() {                            // {4}
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
+  }
+  getUser(id:string):Promise<User>{
+  return firebase.database().ref('/users/' + id).
+   once('value').then(function(snapshot) {
+     return  snapshot.val() ;
+      
+     });
   }
 }

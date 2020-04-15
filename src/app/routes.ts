@@ -6,6 +6,7 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { AuthGuard } from './auth/auth.guard';
 import { DetailUserComponent } from './detail-user/detail-user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { RegisterInfosComponent } from './user/register-infos/register-infos.component';
 
 //import { AuthGuard } from './auth/auth.guard';
 
@@ -24,6 +25,7 @@ export const appRoutes: Routes = [
     },
     { path : '', redirectTo:'/login', pathMatch : 'full'}*/
     { path : '', redirectTo:'/login', pathMatch : 'full'},
-    { path: 'login', component:SignInComponent  }
+    { path: 'login', component:SignInComponent  },
+    { path: 'inscription', component:RegisterInfosComponent  }
     
 ];

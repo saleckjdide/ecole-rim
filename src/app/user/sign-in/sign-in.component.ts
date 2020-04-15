@@ -65,7 +65,8 @@ export class SignInComponent implements OnInit {
 
     if (this.form.valid) {
       console.log(this.form.value);
-      this.authService.login(this.form.value).subscribe((data : any)=>{
+      this.authService.login(this.form.value);
+      /*.subscribe((data : any)=>{
         console.log(data);
         
        localStorage.setItem('userToken',data.email);
@@ -78,7 +79,8 @@ export class SignInComponent implements OnInit {
      });
     }else{
       this.isLoginError=true;
-    }
+    }*/
+  }
     this.formSubmitAttempt = true;             // {8}
   }
 
