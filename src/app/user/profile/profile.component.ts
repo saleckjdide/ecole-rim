@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserService } from '../shared/user.service';
+import { UserService } from '../../shared/user.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
-import { User } from '../auth/user';
+import { AuthService } from '../../auth/auth.service';
+import { User } from '../../auth/user';
 
 @Component({
-  selector: 'app-detail-user',
-  templateUrl: './detail-user.component.html',
-  styleUrls: ['./detail-user.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class DetailUserComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 firstname :string;
 user :User;
   constructor(private serviceUser:UserService, private route : Router, private authService :AuthService) { }

@@ -8,12 +8,11 @@ import { AppComponent } from './app.component';
 import { UserService } from './shared/user.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { UserComponent } from './user/user.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { appRoutes } from './routes';
-import { DetailUserComponent } from './detail-user/detail-user.component';
+import { ProfileComponent } from './user/profile/profile.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 import { HeaderComponent } from './header/header.component';
@@ -32,10 +31,9 @@ import { ChangePasswordComponent } from './user/change-password/change-password.
   declarations: [
     AppComponent,
     SignUpComponent,
-    UserComponent,
     SignInComponent,
     HomeComponent,
-    DetailUserComponent,
+    ProfileComponent,
     LoadingSpinnerComponent,
     HeaderComponent,
     SigUpEtape2Component,
