@@ -38,6 +38,7 @@ export class SigUpEtape2Component implements OnInit {
       Brithday:new Date('1900-01-01'),
       Active:true,
       Type:'etu',
+      ConfirmPassword:''
     }
   }
   ngOnInit(): void {

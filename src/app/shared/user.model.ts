@@ -9,5 +9,5 @@ export class User {
     Brithday:Date;
     Active:boolean;
     Type:string;
-    
+    ConfirmPassword:string;
 }

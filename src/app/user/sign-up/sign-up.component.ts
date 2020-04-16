@@ -41,9 +41,15 @@ export class SignUpComponent implements OnInit {
       Brithday:new Date('1900-01-01'),
       Active:true,
       Type:'etu',
+      ConfirmPassword:''
     }
   }
+  checkPasswords(form: NgForm) { // here we have the 'passwords' group
+  let pass = form.value.ConfirmPassword;
+  let confirmPass = form.value.Password;
 
+  return pass === confirmPass ? null : { notSame: true }     
+}
   OnSubmit(form: NgForm) {
  this.isLoading=true;
     this.userService.registerUser(form.value)
