@@ -17,7 +17,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   registerUser(user: User) {
-    console.log(user);
    return  this.http.post<authResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC1Scu5kcoMb12fGbAcB08-j3pCnZah52I',
    {
      email:user.Email,
@@ -41,7 +40,6 @@ logOut(){
   localStorage.removeItem('userToken'); 
 }
 writeUserData(user:User):Promise<User> {
-  console.log(user);
  return firebase.database().ref('users/' + user.Uid).set({
     firstname: user.FirstName,
     lastname: user.LastName,

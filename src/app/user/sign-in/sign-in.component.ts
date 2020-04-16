@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
+import { CloseScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,17 +12,17 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
- isLoginError : boolean = false; 
-  isLoading=false;
+  isLoginError: boolean = false;
+  isLoading = false;
 
   form: FormGroup;                    // {1}
   private formSubmitAttempt: boolean; // {2}
 
   constructor(
-    private fb: FormBuilder,         
-    private authService: AuthService ,
-    private router:Router
-  ) {}
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.form = this.fb.group({     // {5}
@@ -40,24 +41,35 @@ export class SignInComponent implements OnInit {
   onSubmit() {
 
     if (this.form.valid) {
-      console.log(this.form.value);
-      this.authService.login(this.form.value);
-      /*.subscribe((data : any)=>{
-        console.log(data);
-        
-       localStorage.setItem('userToken',data.email);
-       this.router.navigate(['/detailuser']);
-       this.isLoading=false;
-     },
-     (err : HttpErrorResponse)=>{
-       this.isLoginError = true;
-       this.isLoading=false;
-     });
-    }else{
-      this.isLoginError=true;
-    }*/
-  }
-    this.formSubmitAttempt = true;             // {8}
+      this.isLoading = true;
+      this.authService.login(this.form.value).subscribe(user => {
+        this.authService.getUser(user.localId).then(use => {
+          if (use) {
+            this.authService.setLogIn(true);
+            this.authService.setUser(use);
+            this.router.navigate(['/detailuser']);
+            localStorage.setItem('userToken', user.email);
+          } else {
+            //inscription
+            this.authService.setLogIn(false);
+            localStorage.setItem('uid', user.localId);
+            localStorage.setItem('userToken', user.email);
+            this.router.navigate(['/inscription']);
+          }
+
+        }
+        );
+
+      }, (err: HttpErrorResponse) => {
+        this.isLoginError = true;
+        this.isLoading = false;
+      });
+
+      this.isLoading = false;
+    } else {
+      this.isLoginError = true;
+    }
+    this.formSubmitAttempt = true;
   }
 
 }

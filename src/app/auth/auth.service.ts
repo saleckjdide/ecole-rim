@@ -28,7 +28,7 @@ export interface AuthResponseData{
 export class AuthService {
 
   private loggedIn = new BehaviorSubject<boolean>(false); // {1}
-
+  private user :User;
   get isLoggedIn() {
     return this.loggedIn.asObservable(); // {2}
   }
@@ -48,11 +48,13 @@ export class AuthService {
         password:user.password,
         returnSecureToken:true
        }
-     ).subscribe(user=>{
+     );
+     /*.subscribe(user=>{
     
-    this.getUser(user.localId).then(use=>{
-      if(use){
+      this.getUser(user.localId).then(use=>{
+       if(use){
         this.loggedIn.next(true);
+        this.user=use;
         this.router.navigate(['/detailuser']);
         localStorage.setItem('userToken',user.email);
       }else{
@@ -64,13 +66,19 @@ export class AuthService {
       }
      
     });
-      
-     });
+  
+     });*/
      // 
     }
   }
+  setLogIn(value:boolean){
+    this.loggedIn.next(value);
+  }
+ setUser(user:User){
+    this.user=user;
+ }
   registerUser(user: User) {
-    console.log(user);
+   
    return  this.http.post<authResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC1Scu5kcoMb12fGbAcB08-j3pCnZah52I',
    {
      email:user.email,
@@ -90,6 +98,9 @@ export class AuthService {
      return  snapshot.val() ;
       
      });
+  }
+  getCurrentUser(){
+    return this.user;
   }
  
 }

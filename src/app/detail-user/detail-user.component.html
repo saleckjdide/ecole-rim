@@ -1,9 +1,14 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12" >
             <br/>
-            <p>Bienvenue vous êtes connecté avec l'e-mail : {{firstname}}</p>
+            <h3>Profile</h3>
+              <label >Prénom :</label>  <p name="firstname">{{user.firstname}}</p>
+              <label style="font-size: large;" for="name">Nom :</label>  <p name="name">{{user.lastname}}</p>
+              <label style="font-size: large;" for="email">Email :</label>  <p name="email">{{user.email}}</p>
+            
+           
         </div>
        
     </div>
