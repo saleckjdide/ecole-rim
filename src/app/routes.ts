@@ -7,6 +7,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { DetailUserComponent } from './detail-user/detail-user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SigUpEtape2Component } from './sig-up-etape2/sig-up-etape2.component';
+import { ChangePasswordComponent } from './user/change-password/change-password.component';
 
 
 //import { AuthGuard } from './auth/auth.guard';
@@ -20,13 +21,11 @@ export const appRoutes: Routes = [
     {
         path: 'signup', component: SignUpComponent
        
-    },/*
-    {
-        path: 'login', component: UserComponent
     },
-    { path : '', redirectTo:'/login', pathMatch : 'full'}*/
     { path : '', redirectTo:'/login', pathMatch : 'full'},
     { path: 'login', component:SignInComponent  },
-    { path: 'inscription', component:SigUpEtape2Component  }
+    { path: 'inscription', component:SigUpEtape2Component  },
+    { path: 'changepassword', component:ChangePasswordComponent  }
+    
     
 ];
