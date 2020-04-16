@@ -52,6 +52,7 @@ export class SignUpComponent implements OnInit {
 }
   OnSubmit(form: NgForm) {
  this.isLoading=true;
+ console.log(form.value);
     this.userService.registerUser(form.value)
       .subscribe(resData=>{
         this.user.Uid=resData.localId;

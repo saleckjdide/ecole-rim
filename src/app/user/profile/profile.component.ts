@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../shared/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
-import { User } from '../../auth/user';
+import { User } from 'src/app/shared/user.model';
+
+
 
 @Component({
   selector: 'app-profile',

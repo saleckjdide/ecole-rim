@@ -14,8 +14,8 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">account_circle</i>
-            <input type="text"  formControlName="userName" placeholder="Email" required>
-            <mat-error *ngIf="isFieldInvalid('userName')">
+            <input type="text"  formControlName="Email" placeholder="Email" required>
+            <mat-error *ngIf="isFieldInvalid('Email')">
               L'email est requis.
             </mat-error>
           </div>
@@ -23,8 +23,8 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">vpn_key</i>
-            <input type="password"  formControlName="password" placeholder="Mot de passe" required>
-            <mat-error  *ngIf="isFieldInvalid('password')">
+            <input type="password"  formControlName="Password" placeholder="Mot de passe" required>
+            <mat-error  *ngIf="isFieldInvalid('Password')">
               Le mot de passe est requis.
             </mat-error>
           </div>

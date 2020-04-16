@@ -4,7 +4,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
-import { CloseScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-sign-in',
@@ -26,8 +25,8 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({     // {5}
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
+      Email: ['', Validators.required],
+      Password: ['', Validators.required]
     });
   }
 

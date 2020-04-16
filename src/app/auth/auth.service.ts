@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { catchError, tap } from 'rxjs/operators';
-import { throwError, BehaviorSubject } from 'rxjs';
+import {  BehaviorSubject } from 'rxjs';
 
-import { User } from '../auth/user';
+
 import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
+import { User } from '../shared/user.model';
 
 interface authResponseData{
   idToken: string;
@@ -40,35 +40,16 @@ export class AuthService {
   }
 
   login(user: User){
-    if (user.userName !== '' && user.password !== '' ) { // {3}
+    if (user.Email !== '' && user.Password !== '' ) { // {3}
       
       return  this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC1Scu5kcoMb12fGbAcB08-j3pCnZah52I',
       {
-        email:user.userName,
-        password:user.password,
+        email:user.Email,
+        password:user.Password,
         returnSecureToken:true
        }
      );
-     /*.subscribe(user=>{
     
-      this.getUser(user.localId).then(use=>{
-       if(use){
-        this.loggedIn.next(true);
-        this.user=use;
-        this.router.navigate(['/detailuser']);
-        localStorage.setItem('userToken',user.email);
-      }else{
-        //inscription
-        this.loggedIn.next(false);
-        localStorage.setItem('uid',user.localId);
-        localStorage.setItem('userToken',user.email);
-        this.router.navigate(['/inscription']);
-      }
-     
-    });
-  
-     });*/
-     // 
     }
   }
   setLogIn(value:boolean){
@@ -81,8 +62,8 @@ export class AuthService {
    
    return  this.http.post<authResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC1Scu5kcoMb12fGbAcB08-j3pCnZah52I',
    {
-     email:user.email,
-     password:user.password,
+     email:user.Email,
+     password:user.Password,
      returnSecureToken:true
     }
   );
