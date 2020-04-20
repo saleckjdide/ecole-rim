@@ -28,7 +28,7 @@ export interface AuthResponseData{
 export class AuthService {
 
   private loggedIn = new BehaviorSubject<boolean>(false); // {1}
-  private user :User;
+   user :User;
   get isLoggedIn() {
     return this.loggedIn.asObservable(); // {2}
   }
