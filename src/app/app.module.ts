@@ -21,7 +21,7 @@ import{AngularFireModule} from '@angular/fire'
 import { MaterialModule } from './material-module/material-module.module';
 import { SigUpEtape2Component } from './user/sig-up-etape2/sig-up-etape2.component';
 import { EqualValidator } from './equal-validator.directive';
-import { ChangePasswordComponent } from './user/change-password/change-password.component';
+
 
 
 
@@ -37,8 +37,7 @@ import { ChangePasswordComponent } from './user/change-password/change-password.
     LoadingSpinnerComponent,
     HeaderComponent,
     SigUpEtape2Component,
-    EqualValidator,
-    ChangePasswordComponent
+    EqualValidator
 
   ],
   imports: [
