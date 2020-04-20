@@ -70,5 +70,14 @@ export class SignInComponent implements OnInit {
     }
     this.formSubmitAttempt = true;
   }
-
+  resetPassword() { 
+    if (!this.form.value.Email) { 
+      alert('Merci de remplire le champ e-mail'); 
+    }
+    this.authService.resetPasswordInit(this.form.value.Email) 
+    .then(
+      () => alert('Un lien de réintialisation de mot de passe a été envoyé sur votre e-mail'), 
+      (rejectionReason) => "") 
+    .catch(e => alert("Une erreur s'est produite lors de la tentative de remise en sécurité de votre mot de passe")); 
+  }
 }

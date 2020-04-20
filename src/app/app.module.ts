@@ -21,6 +21,9 @@ import{AngularFireModule} from '@angular/fire'
 import { MaterialModule } from './material-module/material-module.module';
 import { SigUpEtape2Component } from './user/sig-up-etape2/sig-up-etape2.component';
 import { EqualValidator } from './equal-validator.directive';
+import { UserManagementComponent } from './user/user-management/user-management.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -37,7 +40,8 @@ import { EqualValidator } from './equal-validator.directive';
     LoadingSpinnerComponent,
     HeaderComponent,
     SigUpEtape2Component,
-    EqualValidator
+    EqualValidator,
+    UserManagementComponent
 
   ],
   imports: [
@@ -49,7 +53,9 @@ import { EqualValidator } from './equal-validator.directive';
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     AngularFireModule,
-    MaterialModule
+    MaterialModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
    
   ],
   providers: [UserService

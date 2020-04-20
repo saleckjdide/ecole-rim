@@ -8,6 +8,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SigUpEtape2Component } from './user/sig-up-etape2/sig-up-etape2.component';
 
 import { ProfileComponent } from './user/profile/profile.component';
+import { UserManagementComponent } from './user/user-management/user-management.component';
 
 
 //import { AuthGuard } from './auth/auth.guard';
@@ -24,7 +25,8 @@ export const appRoutes: Routes = [
     },
     { path : '', redirectTo:'/login', pathMatch : 'full'},
     { path: 'login', component:SignInComponent  },
-    { path: 'inscription', component:SigUpEtape2Component  }
+    { path: 'inscription', component:SigUpEtape2Component  },
+    { path: 'userMgmt', component: UserManagementComponent } 
     
     
 ];

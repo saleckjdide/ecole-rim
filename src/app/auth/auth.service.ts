@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {  BehaviorSubject } from 'rxjs';
-
+import { AngularFireAuth } from "@angular/fire/auth"; 
 
 import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
@@ -34,7 +34,8 @@ export class AuthService {
   }
 
   constructor(
-    private router: Router,private http :HttpClient
+    private router: Router,private http :HttpClient,
+    private afAuth: AngularFireAuth
   ) {
     firebase.initializeApp(environment.firebase)
   }
@@ -83,5 +84,9 @@ export class AuthService {
   getCurrentUser(){
     return this.user;
   }
- 
+  resetPasswordInit(email: string) { 
+    return this.afAuth.sendPasswordResetEmail(
+      email, 
+      { url: 'http://localhost:4200/login' }); 
+    } 
 }
